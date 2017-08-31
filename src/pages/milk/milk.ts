@@ -18,4 +18,8 @@ export class MilkPage {
     console.log(this.navParams.data.coffee)
   }
 
+  redirectToCoffee() {
+    this.navCtrl.pop();
+  }
+
 }

@@ -1,6 +1,8 @@
 {
   "name": "coffee_mockup",
-  "app_id": "",
+  "app_id": "f740425f",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }

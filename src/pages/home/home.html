@@ -8,13 +8,13 @@
 
 <ion-content padding>
   {{coffee}}
-  <img style="margin-bottom: -350px" src="../../assets/images/coffee_fill-{{coffee}}.png" />
-  <ion-item no-lines style="background-color: transparent; position: absolute; margin-top: 400px; margin-left: -15px">
+  <img style="margin-bottom: -350px" src="assets/images/coffee_fill-{{coffee}}.png" />
+  <ion-item no-lines style="background-color: transparent; margin-top: 350px">
     <ion-label class="range"> Coffee </ion-label>
     <ion-range class="range" pin="true" min="1" max="5" [(ngModel)]="coffee" [ngModel]="coffee" (ngModelChange)="test()" color="cream">
       <ion-label range-left> Min </ion-label>
       <ion-label range-right> Max </ion-label>
     </ion-range>
   </ion-item>
-  <button class="range" ion-button style="position: absolute; margin-top: 525px; margin-left: 200px; height: 40px; width: 140px" color="cream" (click)="redirectToMilk()">Add Milk</button>
+  <button class="range" ion-button style="margin-top: 0px; margin-left: 180px; height: 40px; width: 140px" color="cream" (click)="redirectToMilk()">Add Milk</button>
 </ion-content>
