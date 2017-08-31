@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      MilkPage
+      Milk
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -11,10 +11,10 @@
   <img style="margin-bottom: -350px" src="assets/images/coffee_fill-{{coffee}}.png" />
   <ion-item no-lines style="background-color: transparent; margin-top: 350px">
     <ion-label class="range"> Milk </ion-label>
-    <ion-range class="range" pin="true" min="1" max="5" [(ngModel)]="coffee" [ngModel]="coffee" (ngModelChange)="test()" color="cream">
+    <ion-range class="range" pin="true" min="1" max="5" [(ngModel)]="milk" color="cream">
       <ion-label range-left> Min </ion-label>
       <ion-label range-right> Max </ion-label>
     </ion-range>
   </ion-item>
-  <button class="range" ion-button style="margin-left: 60px; margin-left: 20px; height: 40px; width: 140px" color="cream" (click)="redirectToCoffee()">Back</button>
+  <button class="range" ion-button style="margin-left: 30px; height: 40px; width: 140px" color="cream" (click)="redirectToCoffee()">Back</button>
 </ion-content>
