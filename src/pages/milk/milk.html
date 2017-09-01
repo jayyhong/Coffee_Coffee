@@ -8,10 +8,11 @@
 
 <ion-content padding>
   {{milk}}
-  <img style="margin-bottom: -350px" src="assets/images/coffee_fill-{{coffee}}.png" />
+  <img *ngIf="coffee_0" style="margin-bottom: -350px" src="assets/images/possible/milk_fill-{{milk}}.png" />
+  <img *ngIf="coffee_1" style="margin-bottom: -350px" src="../../assets/images/coffee_1/coffee_1-{{milk}}.png" />
   <ion-item no-lines style="background-color: transparent; margin-top: 350px">
     <ion-label class="range"> Milk </ion-label>
-    <ion-range class="range" pin="true" min="1" max="5" [(ngModel)]="milk" color="cream">
+    <ion-range class="range" pin="true" min="1" max="5" [(ngModel)]="milk" [ngModel]="milk" (ngModelChange)="check()" color="cream">
       <ion-label range-left> Min </ion-label>
       <ion-label range-right> Max </ion-label>
     </ion-range>
