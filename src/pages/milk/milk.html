@@ -1,15 +1,13 @@
 <ion-header>
-  <ion-navbar>
     <ion-title>
       Milk
     </ion-title>
-  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   {{milk}}
   <img *ngIf="coffee_0" style="margin-bottom: -350px" src="assets/images/possible/milk_fill-{{milk}}.png" />
-  <img *ngIf="coffee_1" style="margin-bottom: -350px" src="../../assets/images/coffee_1/coffee_1-{{milk}}.png" />
+  <img *ngIf="coffee_1" style="margin-bottom: -350px" src="assets/images/coffee_1/coffee_1-{{milk}}.png" />
   <ion-item no-lines style="background-color: transparent; margin-top: 350px">
     <ion-label class="range"> Milk </ion-label>
     <ion-range class="range" pin="true" min="1" max="5" [(ngModel)]="milk" [ngModel]="milk" (ngModelChange)="check()" color="cream">
