@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { SubmitPage } from '../submit/submit';
 
 @Component({
   selector: 'page-milk',
@@ -50,9 +51,22 @@ export class MilkPage {
 
   check() {
     if ((this.coffee + this.milk) >= 7) {
-      //remove coffee image, replace with overfill animation
+      if (this.coffee === 1) {
+        this.coffee_0 = false;
+      }
+      if (this.coffee === 2) {
+        this.coffee_1 = false;
+      }
+      if (this.coffee === 3) {
+        this.coffee_2 = false;
+      }
+      if (this.coffee === 4) {
+        this.coffee_3 = false;
+      }
+      if (this.coffee === 5) {
+        this.coffee_4 = false;
+      }
       this.overfill = true;
-      //clearInterval will stop animation so it doesn't keep stacking
       clearInterval(this.overfill_animate)
       //animation for overfill start
       this.overfill_animate = setInterval(() => {
@@ -65,12 +79,36 @@ export class MilkPage {
 
     } else {
       //turn off overfill animation, bring image back
-      this.overfill = false;
+      if ((this.coffee + this.milk) < 7) {
+        if (this.coffee === 1) {
+          this.coffee_0 = true;
+        }
+        if (this.coffee === 2) {
+          this.coffee_1 = true;
+        }
+        if (this.coffee === 3) {
+          this.coffee_2 = true;
+        }
+        if (this.coffee === 4) {
+          this.coffee_3 = true;
+        }
+        if (this.coffee === 5) {
+          this.coffee_4 = true;
+        }
+        this.overfill = false;
+      }
     }
   }
 
   redirectToCoffee() {
     this.navCtrl.pop();
+  }
+
+  redirectToSubmit() {
+    this.navCtrl.push(SubmitPage, {
+      coffee: this.coffee,
+      milk: this.milk
+    })
   }
 
 }
