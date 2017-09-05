@@ -107,6 +107,7 @@ var MilkPage = (function () {
         this.milk = 1;
         this.coffee_0 = false;
         this.coffee_1 = false;
+        this.coffee_2 = false;
         this.overfill = false;
     }
     MilkPage.prototype.ngOnInit = function () {
@@ -116,16 +117,19 @@ var MilkPage = (function () {
             //coffee_0 is milk fill with no coffee
             this.coffee_0 = true;
         }
-        if (this.coffee === 2) {
+        else if (this.coffee === 2) {
             //coffee_1 is milk fill with 1 coffee
             this.coffee_1 = true;
+        }
+        else if (this.coffee === 3) {
+            //coffe_2 is milk fill with 2 coffee
+            this.coffee_2 = true;
         }
     };
     MilkPage.prototype.check = function () {
         var _this = this;
-        if ((this.coffee + this.milk) === 7) {
+        if ((this.coffee + this.milk) >= 7) {
             //remove coffee image, replace with overfill animation
-            this.coffee_1 = false;
             this.overfill = true;
             //clearInterval will stop animation so it doesn't keep stacking
             clearInterval(this.overfill_animate);
@@ -141,7 +145,6 @@ var MilkPage = (function () {
         }
         else {
             //turn off overfill animation, bring image back
-            this.coffee_1 = true;
             this.overfill = false;
         }
     };
@@ -152,7 +155,7 @@ var MilkPage = (function () {
 }());
 MilkPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-milk',template:/*ion-inline-start:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/milk/milk.html"*/'<ion-header>\n    <ion-title>\n      Milk\n    </ion-title>\n</ion-header>\n\n<ion-content padding>\n  {{milk}}\n  <img *ngIf="coffee_0" style="margin-bottom: -350px" src="assets/images/possible/milk_fill-{{milk}}.png" />\n  <img *ngIf="coffee_1" style="margin-bottom: -350px" src="assets/images/coffee_1/coffee_1-{{milk}}.png" />\n  <img *ngIf="overfill" style="margin-bottom: -350px" src="assets/images/overfill/overfill-{{overfill_frames}}.png" />\n  <ion-item no-lines style="background-color: transparent; margin-top: 350px">\n    <ion-label class="range"> Milk </ion-label>\n    <ion-range class="range" pin="true" min="1" max="5" [(ngModel)]="milk" [ngModel]="milk" (ngModelChange)="check()" color="cream">\n      <ion-label range-left> Min </ion-label>\n      <ion-label range-right> Max </ion-label>\n    </ion-range>\n  </ion-item>\n  <button class="range" ion-button style="margin-left: 30px; height: 40px; width: 140px" color="cream" (click)="redirectToCoffee()">Back</button>\n</ion-content>'/*ion-inline-end:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/milk/milk.html"*/
+        selector: 'page-milk',template:/*ion-inline-start:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/milk/milk.html"*/'<ion-header>\n    <ion-title>\n      Milk\n    </ion-title>\n</ion-header>\n\n<ion-content padding>\n  {{milk}}\n  <img *ngIf="coffee_0" style="margin-bottom: -350px" src="assets/images/possible/milk_fill-{{milk}}.png" />\n  <img *ngIf="coffee_1" style="margin-bottom: -350px" src="assets/images/coffee_1/coffee_1-{{milk}}.png" />\n  <img *ngIf="coffee_2" style="margin-bottom: -350px" src="assets/images/coffee_2/coffee_2-{{milk}}.png" />\n  <img *ngIf="overfill" style="margin-bottom: -350px" src="assets/images/overfill/overfill-{{overfill_frames}}.png" />\n  <ion-item no-lines style="background-color: transparent; margin-top: 350px">\n    <ion-label class="range"> Milk </ion-label>\n    <ion-range class="range" pin="true" min="1" max="5" [(ngModel)]="milk" [ngModel]="milk" (ngModelChange)="check()" color="cream">\n      <ion-label range-left> Min </ion-label>\n      <ion-label range-right> Max </ion-label>\n    </ion-range>\n  </ion-item>\n  <button class="range" ion-button style="margin-left: 30px; height: 40px; width: 140px" color="cream" (click)="redirectToCoffee()">Back</button>\n</ion-content>'/*ion-inline-end:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/milk/milk.html"*/
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]) === "function" && _b || Object])
 ], MilkPage);

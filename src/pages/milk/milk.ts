@@ -9,7 +9,8 @@ export class MilkPage {
   coffee: any;
   milk: any;
   coffee_0: boolean;
-  coffee_1: boolean
+  coffee_1: boolean;
+  coffee_2: boolean;
   overfill: boolean;
   overfill_frames: any;
   overfill_animate: any;
@@ -19,6 +20,7 @@ export class MilkPage {
     this.milk = 1;
     this.coffee_0 = false;
     this.coffee_1 = false;
+    this.coffee_2 = false;
     this.overfill = false;
   }
 
@@ -28,17 +30,18 @@ export class MilkPage {
     if (this.coffee === 1) {
       //coffee_0 is milk fill with no coffee
       this.coffee_0 = true;
-    }
-    if (this.coffee === 2) {
+    } else if (this.coffee === 2) {
       //coffee_1 is milk fill with 1 coffee
       this.coffee_1 = true;
+    } else if (this.coffee === 3) {
+      //coffe_2 is milk fill with 2 coffee
+      this.coffee_2 = true;
     }
   }
 
   check() {
-    if ((this.coffee + this.milk) === 7) {
+    if ((this.coffee + this.milk) >= 7) {
       //remove coffee image, replace with overfill animation
-      this.coffee_1 = false;
       this.overfill = true;
       //clearInterval will stop animation so it doesn't keep stacking
       clearInterval(this.overfill_animate)
@@ -53,7 +56,6 @@ export class MilkPage {
 
     } else {
       //turn off overfill animation, bring image back
-      this.coffee_1 = true;
       this.overfill = false;
     }
   }
