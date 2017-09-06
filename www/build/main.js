@@ -40,7 +40,7 @@ webpackEmptyAsyncContext.id = 147;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__milk_milk__ = __webpack_require__(192);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -55,25 +55,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var HomePage = (function () {
-    function HomePage(navCtrl) {
+    function HomePage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
+        this.navParams = navParams;
         this.coffee = 1;
+        this.name = this.navParams.data.name;
     }
-    HomePage.prototype.test = function () {
-        console.log(this.coffee);
-    };
     HomePage.prototype.redirectToMilk = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__milk_milk__["a" /* MilkPage */], {
-            coffee: this.coffee
-        });
+            coffee: this.coffee,
+            name: this.name
+        }, { animate: false });
     };
     return HomePage;
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/home/home.html"*/'<ion-header>\n    <ion-title>\n      Coffee\n    </ion-title>\n</ion-header>\n\n<ion-content padding>\n  {{coffee}}\n  <img style="margin-bottom: -350px" src="assets/images/coffee_fill-{{coffee}}.png" />\n  <ion-item no-lines style="background-color: transparent; margin-top: 350px">\n    <ion-label class="range"> Coffee </ion-label>\n    <ion-range class="range" pin="true" min="1" max="5" [(ngModel)]="coffee" [ngModel]="coffee" (ngModelChange)="test()" color="cream">\n      <ion-label range-left> Min </ion-label>\n      <ion-label range-right> Max </ion-label>\n    </ion-range>\n  </ion-item>\n  <button class="range" ion-button style="margin-top: 0px; margin-left: 180px; height: 40px; width: 140px" color="cream" (click)="redirectToMilk()">Add Milk</button>\n</ion-content>'/*ion-inline-end:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/home/home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/home/home.html"*/'<ion-header>\n    <!-- <ion-title>\n      Coffee\n    </ion-title> -->\n</ion-header>\n\n<ion-content padding>\n  {{coffee}}\n  <img style="margin-bottom: -350px" src="assets/images/coffee_fill-{{coffee}}.png" />\n  <ion-item no-lines style="background-color: transparent; margin-top: 350px">\n    <ion-label class="range"> Coffee </ion-label>\n    <ion-range class="range" pin="true" min="1" max="5" [(ngModel)]="coffee" color="cream">\n      <ion-label range-left> Min </ion-label>\n      <ion-label range-right> Max </ion-label>\n    </ion-range>\n  </ion-item>\n  <button class="range" ion-button style="margin-top: 0px; margin-left: 180px; height: 40px; width: 140px" color="cream" (click)="redirectToMilk()">Add Milk</button>\n</ion-content>'/*ion-inline-end:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/home/home.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]])
 ], HomePage);
 
 //# sourceMappingURL=home.js.map
@@ -86,8 +86,9 @@ HomePage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MilkPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__submit_submit__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__submit_submit__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__overfilled_overfilled__ = __webpack_require__(264);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -100,10 +101,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var MilkPage = (function () {
     function MilkPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.name = this.navParams.data.name;
         this.overfill_frames = 1;
         this.coffee = 1;
         this.milk = 1;
@@ -190,24 +193,32 @@ var MilkPage = (function () {
         }
     };
     MilkPage.prototype.redirectToCoffee = function () {
-        this.navCtrl.pop();
+        this.navCtrl.pop({ animate: false });
+    };
+    MilkPage.prototype.redirectToOverfilled = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__overfilled_overfilled__["a" /* OverfilledPage */], {}, { animate: false });
     };
     MilkPage.prototype.redirectToSubmit = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__submit_submit__["a" /* SubmitPage */], {
-            coffee: this.coffee,
-            milk: this.milk
-        });
+        if (this.overfill === true) {
+            this.redirectToOverfilled();
+        }
+        else {
+            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__submit_submit__["a" /* SubmitPage */], {
+                coffee: this.coffee,
+                milk: this.milk,
+                name: this.name
+            }, { animate: false });
+        }
     };
     return MilkPage;
 }());
 MilkPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-milk',template:/*ion-inline-start:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/milk/milk.html"*/'<ion-header>\n    <ion-title>\n      Milk\n    </ion-title>\n</ion-header>\n\n<ion-content padding>\n  {{milk}}\n  <img *ngIf="coffee_0" style="margin-bottom: -350px" src="assets/images/possible/milk_fill-{{milk}}.png" />\n  <img *ngIf="coffee_1" style="margin-bottom: -350px" src="assets/images/coffee_1/coffee_1-{{milk}}.png" />\n  <img *ngIf="coffee_2" style="margin-bottom: -350px" src="assets/images/coffee_2/coffee_2-{{milk}}.png" />\n  <img *ngIf="coffee_3" style="margin-bottom: -350px" src="assets/images/coffee_3/coffee_3-{{milk}}.png" />\n  <img *ngIf="coffee_4" style="margin-bottom: -350px" src="assets/images/coffee_4/coffee_4-{{milk}}.png" />\n  <img *ngIf="overfill" style="margin-bottom: -350px" src="assets/images/overfill/overfill-{{overfill_frames}}.png" />\n  <ion-item no-lines style="background-color: transparent; margin-top: 350px">\n    <ion-label class="range"> Milk </ion-label>\n    <ion-range class="range" pin="true" min="1" max="5" [(ngModel)]="milk" [ngModel]="milk" (ngModelChange)="check()" color="cream">\n      <ion-label range-left> Min </ion-label>\n      <ion-label range-right> Max </ion-label>\n    </ion-range>\n  </ion-item>\n  <button class="range" ion-button style="margin-left: 30px; height: 40px; width: 140px" color="cream" (click)="redirectToCoffee()">Back</button>\n  <button class="range" ion-button style= "margin-left: 5px; height: 40px; width: 140px" color="cream" (click)="redirectToSubmit()">Submit</button>\n</ion-content>'/*ion-inline-end:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/milk/milk.html"*/
+        selector: 'page-milk',template:/*ion-inline-start:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/milk/milk.html"*/'<ion-header>\n    <!-- <ion-title>\n      Milk\n    </ion-title> -->\n</ion-header>\n\n<ion-content padding>\n  {{milk}}\n  <img *ngIf="coffee_0" style="margin-bottom: -350px" src="assets/images/possible/milk_fill-{{milk}}.png" />\n  <img *ngIf="coffee_1" style="margin-bottom: -350px" src="assets/images/coffee_1/coffee_1-{{milk}}.png" />\n  <img *ngIf="coffee_2" style="margin-bottom: -350px" src="assets/images/coffee_2/coffee_2-{{milk}}.png" />\n  <img *ngIf="coffee_3" style="margin-bottom: -350px" src="assets/images/coffee_3/coffee_3-{{milk}}.png" />\n  <img *ngIf="coffee_4" style="margin-bottom: -350px" src="assets/images/coffee_4/coffee_4-{{milk}}.png" />\n  <img *ngIf="overfill" style="margin-bottom: -350px" src="assets/images/overfill/overfill-{{overfill_frames}}.png" />\n  <ion-item no-lines style="background-color: transparent; margin-top: 350px">\n    <ion-label class="range"> Milk </ion-label>\n    <ion-range class="range" pin="true" min="1" max="5" [(ngModel)]="milk" [ngModel]="milk" (ngModelChange)="check()" color="cream">\n      <ion-label range-left> Min </ion-label>\n      <ion-label range-right> Max </ion-label>\n    </ion-range>\n  </ion-item>\n  <button class="range" ion-button style="margin-left: 30px; height: 40px; width: 140px" color="cream" (click)="redirectToCoffee()">Back</button>\n  <button class="range" ion-button style= "margin-left: 5px; height: 40px; width: 140px" color="cream" (click)="redirectToSubmit()">Submit</button>\n</ion-content>'/*ion-inline-end:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/milk/milk.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]])
 ], MilkPage);
 
-var _a, _b;
 //# sourceMappingURL=milk.js.map
 
 /***/ }),
@@ -216,9 +227,70 @@ var _a, _b;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SubmitPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var SubmitPage = (function () {
+    function SubmitPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.name = this.navParams.data.name;
+        this.coffee = this.navParams.data.coffee;
+        this.milk = this.navParams.data.milk;
+        this.sugar = 1;
+        this.sugarAmount = 0;
+        this.sugarShow = false;
+    }
+    SubmitPage.prototype.addSugar = function () {
+        var _this = this;
+        this.sugarShow = true;
+        clearInterval(this.sugar_animate);
+        this.sugar_animate = setInterval(function () {
+            if (_this.sugar >= 10) {
+                _this.sugarAmount++;
+                _this.sugarShow = false;
+                _this.sugar = 1;
+                clearInterval(_this.sugar_animate);
+            }
+            else {
+                _this.sugar++;
+            }
+        }, 30);
+    };
+    SubmitPage.prototype.redirectToMilk = function () {
+        this.navCtrl.pop({ animate: false });
+    };
+    return SubmitPage;
+}());
+SubmitPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-submit',template:/*ion-inline-start:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/submit/submit.html"*/'<ion-header>\n    <!-- <ion-title>\n      Submit\n    </ion-title> -->\n</ion-header>\n\n<ion-content padding>\n  <img *ngIf = "sugarShow" style="position: absolute; width: 350px; margin-left: -20px" src="assets/images/sugar_packets/sugar-{{sugar}}.png" />\n  <img style="position: absolute; width: 250px; margin-left: 120px; margin-top: 260px" src="../../assets/images/coffee_cup_complete/coffee_cup_complete1.png" />\n  <button ion-button color="cream" (click)="addSugar()">Add Sugar</button>\n  <button ion-button color="cream" (click)="redirectToMilk()">Back</button>\n  <h1 class="name">{{name}}</h1>\n  <h1>{{coffee}}</h1>\n  <h1>{{milk}}</h1>\n  <h1>{{sugarAmount}}</h1>\n</ion-content>'/*ion-inline-end:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/submit/submit.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]])
+], SubmitPage);
+
+//# sourceMappingURL=submit.js.map
+
+/***/ }),
+
+/***/ 194:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(213);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -226,26 +298,30 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 212:
+/***/ 213:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(187);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(190);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(261);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_milk_milk__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_submit_submit__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_intro_intro__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_milk_milk__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_submit_submit__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_overfilled_overfilled__ = __webpack_require__(264);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -264,9 +340,11 @@ AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */],
-            __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */],
-            __WEBPACK_IMPORTED_MODULE_7__pages_milk_milk__["a" /* MilkPage */],
-            __WEBPACK_IMPORTED_MODULE_8__pages_submit_submit__["a" /* SubmitPage */]
+            __WEBPACK_IMPORTED_MODULE_6__pages_intro_intro__["a" /* IntroPage */],
+            __WEBPACK_IMPORTED_MODULE_7__pages_home_home__["a" /* HomePage */],
+            __WEBPACK_IMPORTED_MODULE_8__pages_milk_milk__["a" /* MilkPage */],
+            __WEBPACK_IMPORTED_MODULE_9__pages_submit_submit__["a" /* SubmitPage */],
+            __WEBPACK_IMPORTED_MODULE_10__pages_overfilled_overfilled__["a" /* OverfilledPage */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -275,9 +353,11 @@ AppModule = __decorate([
         bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* IonicApp */]],
         entryComponents: [
             __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */],
-            __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */],
-            __WEBPACK_IMPORTED_MODULE_7__pages_milk_milk__["a" /* MilkPage */],
-            __WEBPACK_IMPORTED_MODULE_8__pages_submit_submit__["a" /* SubmitPage */]
+            __WEBPACK_IMPORTED_MODULE_6__pages_intro_intro__["a" /* IntroPage */],
+            __WEBPACK_IMPORTED_MODULE_7__pages_home_home__["a" /* HomePage */],
+            __WEBPACK_IMPORTED_MODULE_8__pages_milk_milk__["a" /* MilkPage */],
+            __WEBPACK_IMPORTED_MODULE_9__pages_submit_submit__["a" /* SubmitPage */],
+            __WEBPACK_IMPORTED_MODULE_10__pages_overfilled_overfilled__["a" /* OverfilledPage */]
         ],
         providers: [
             __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
@@ -291,16 +371,16 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 261:
+/***/ 262:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_intro_intro__ = __webpack_require__(263);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -317,7 +397,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var MyApp = (function () {
     function MyApp(platform, statusBar, splashScreen) {
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */];
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_intro_intro__["a" /* IntroPage */];
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
@@ -337,13 +417,14 @@ MyApp = __decorate([
 
 /***/ }),
 
-/***/ 262:
+/***/ 263:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SubmitPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IntroPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(191);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -355,40 +436,88 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var SubmitPage = (function () {
-    function SubmitPage(navCtrl, navParams) {
+
+var IntroPage = (function () {
+    function IntroPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.coffee = this.navParams.data.coffee;
-        this.milk = this.navParams.data.milk;
-        this.sugar = 1;
+        this.name = null;
     }
-    SubmitPage.prototype.addSugar = function () {
+    IntroPage.prototype.redirectToCoffee = function () {
+        swal({
+            title: 'Welcome, ' + this.name + '!',
+            text: 'To get started, use the slider to select the desired amount of coffee',
+            imageUrl: '../../assets/images/overfill/overfill-1.png',
+            imageWidth: 150,
+            animation: false
+        });
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__home_home__["a" /* HomePage */], {
+            name: this.name
+        }, { animate: false });
+    };
+    return IntroPage;
+}());
+IntroPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-intro',template:/*ion-inline-start:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/intro/intro.html"*/'<ion-header>\n    <!-- <ion-title>\n      Intro\n    </ion-title> -->\n</ion-header>\n\n<ion-content padding>\n  <ion-item>\n    <ion-input placeholder="Name" [(ngModel)]="name"> </ion-input>\n  </ion-item>\n  <button ion-button color="cream" (click)="redirectToCoffee()">Start</button>\n</ion-content>'/*ion-inline-end:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/intro/intro.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]])
+], IntroPage);
+
+//# sourceMappingURL=intro.js.map
+
+/***/ }),
+
+/***/ 264:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OverfilledPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var OverfilledPage = (function () {
+    function OverfilledPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.overfill_frames = 1;
+    }
+    OverfilledPage.prototype.ngOnInit = function () {
         var _this = this;
-        clearInterval(this.sugar_animate);
-        this.sugar_animate = setInterval(function () {
-            if (_this.sugar >= 13) {
-                _this.sugar = 1;
-                clearInterval(_this.sugar_animate);
+        setInterval(function () {
+            if (_this.overfill_frames >= 23) {
+                _this.overfill_frames = 1;
             }
             else {
-                _this.sugar++;
+                _this.overfill_frames++;
             }
         }, 30);
     };
-    return SubmitPage;
+    OverfilledPage.prototype.redirectToMilk = function () {
+        this.navCtrl.pop({ animate: false });
+    };
+    return OverfilledPage;
 }());
-SubmitPage = __decorate([
+OverfilledPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-submit',template:/*ion-inline-start:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/submit/submit.html"*/'<ion-header>\n    <ion-title>\n      Submit\n    </ion-title>\n</ion-header>\n\n<ion-content padding>\n  <img src="assets/images/sugar_packets/sugar-{{sugar}}.png" />\n  <button ion-button color="cream" (click)="addSugar()">Add Sugar</button>\n  <h1>{{coffee}}</h1>\n  <h1>{{milk}}</h1>\n</ion-content>'/*ion-inline-end:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/submit/submit.html"*/
+        selector: 'page-overfilled',template:/*ion-inline-start:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/overfilled/overfilled.html"*/'<ion-header>\n  <!-- <ion-title>\n      Submit\n    </ion-title> -->\n</ion-header>\n\n<ion-content padding>\n  <img src="assets/images/overfill/overfill-{{overfill_frames}}.png" />\n  <h1 style="margin-left: 80px; font-family: \'Baloo Bhaijaan\', cursive;">Too much bruh</h1>\n  <button ion-button style="height: 25%; width: 100%" color="cream" (click)="redirectToMilk()">Back</button>\n</ion-content>'/*ion-inline-end:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/overfilled/overfilled.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]) === "function" && _b || Object])
-], SubmitPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]])
+], OverfilledPage);
 
-var _a, _b;
-//# sourceMappingURL=submit.js.map
+//# sourceMappingURL=overfilled.js.map
 
 /***/ })
 
-},[193]);
+},[194]);
 //# sourceMappingURL=main.js.map

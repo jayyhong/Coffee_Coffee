@@ -1,7 +1,7 @@
 <ion-header>
-    <ion-title>
+    <!-- <ion-title>
       Coffee
-    </ion-title>
+    </ion-title> -->
 </ion-header>
 
 <ion-content padding>
@@ -9,7 +9,7 @@
   <img style="margin-bottom: -350px" src="assets/images/coffee_fill-{{coffee}}.png" />
   <ion-item no-lines style="background-color: transparent; margin-top: 350px">
     <ion-label class="range"> Coffee </ion-label>
-    <ion-range class="range" pin="true" min="1" max="5" [(ngModel)]="coffee" [ngModel]="coffee" (ngModelChange)="test()" color="cream">
+    <ion-range class="range" pin="true" min="1" max="5" [(ngModel)]="coffee" color="cream">
       <ion-label range-left> Min </ion-label>
       <ion-label range-right> Max </ion-label>
     </ion-range>

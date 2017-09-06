@@ -28,16 +28,16 @@
  </options>
  <timelineMarkers/>
  <scenes>
-  <scene name="Top" id="081e898ed2a2e6a8" nbframes="20">
+  <scene name="Top" id="081e898ed2a2e6a8" nbframes="16">
    <columns>
     <column type="0" name="Drawing" displayOrder="0" width="100" anonymous="true" id="1">
-     <elementSeq exposures="1,2-4,5,15,16,17-19,20" val="1" id="1"/>
-     <elementSeq exposures="6" val="1_3" id="1"/>
-     <elementSeq exposures="7" val="1_4" id="1"/>
-     <elementSeq exposures="8" val="1_5" id="1"/>
-     <elementSeq exposures="9" val="1_6" id="1"/>
-     <elementSeq exposures="10" val="1_7" id="1"/>
-     <elementSeq exposures="11-14" val="1_8" id="1"/>
+     <elementSeq exposures="1,11,12,13-15,16" val="1" id="1"/>
+     <elementSeq exposures="2" val="1_3" id="1"/>
+     <elementSeq exposures="3" val="1_4" id="1"/>
+     <elementSeq exposures="4" val="1_5" id="1"/>
+     <elementSeq exposures="5" val="1_6" id="1"/>
+     <elementSeq exposures="6" val="1_7" id="1"/>
+     <elementSeq exposures="7-10" val="1_8" id="1"/>
     </column>
    </columns>
    <options>

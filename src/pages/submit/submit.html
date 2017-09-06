@@ -1,12 +1,16 @@
 <ion-header>
-    <ion-title>
+    <!-- <ion-title>
       Submit
-    </ion-title>
+    </ion-title> -->
 </ion-header>
 
 <ion-content padding>
-  <img src="assets/images/sugar_packets/sugar-{{sugar}}.png" />
+  <img *ngIf = "sugarShow" style="position: absolute; width: 350px; margin-left: -20px" src="assets/images/sugar_packets/sugar-{{sugar}}.png" />
+  <img style="position: absolute; width: 250px; margin-left: 120px; margin-top: 260px" src="../../assets/images/coffee_cup_complete/coffee_cup_complete1.png" />
   <button ion-button color="cream" (click)="addSugar()">Add Sugar</button>
+  <button ion-button color="cream" (click)="redirectToMilk()">Back</button>
+  <h1 class="name">{{name}}</h1>
   <h1>{{coffee}}</h1>
   <h1>{{milk}}</h1>
+  <h1>{{sugarAmount}}</h1>
 </ion-content>

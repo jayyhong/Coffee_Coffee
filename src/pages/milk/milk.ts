@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { SubmitPage } from '../submit/submit';
+import { OverfilledPage } from '../overfilled/overfilled';
 
 @Component({
   selector: 'page-milk',
   templateUrl: 'milk.html'
 })
 export class MilkPage {
+  name: any;
   coffee: any;
   milk: any;
   coffee_0: boolean;
@@ -18,6 +20,7 @@ export class MilkPage {
   overfill_frames: any;
   overfill_animate: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.name = this.navParams.data.name;
     this.overfill_frames = 1;
     this.coffee = 1;
     this.milk = 1;
@@ -101,14 +104,23 @@ export class MilkPage {
   }
 
   redirectToCoffee() {
-    this.navCtrl.pop();
+    this.navCtrl.pop({ animate: false });
+  }
+
+  redirectToOverfilled() {
+    this.navCtrl.push(OverfilledPage,{},{animate: false})
   }
 
   redirectToSubmit() {
-    this.navCtrl.push(SubmitPage, {
-      coffee: this.coffee,
-      milk: this.milk
-    })
+    if (this.overfill === true) {
+      this.redirectToOverfilled()
+    } else {
+      this.navCtrl.push(SubmitPage, {
+        coffee: this.coffee,
+        milk: this.milk,
+        name: this.name
+      }, { animate: false })
+    }
   }
 
 }
