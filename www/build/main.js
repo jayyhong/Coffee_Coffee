@@ -361,14 +361,26 @@ var SubmitPage = (function () {
         this.navParams = navParams;
         this.coffee = this.navParams.data.coffee;
         this.milk = this.navParams.data.milk;
+        this.sugar = 1;
     }
-    SubmitPage.prototype.test = function () {
+    SubmitPage.prototype.addSugar = function () {
+        var _this = this;
+        clearInterval(this.sugar_animate);
+        this.sugar_animate = setInterval(function () {
+            if (_this.sugar >= 13) {
+                _this.sugar = 1;
+                clearInterval(_this.sugar_animate);
+            }
+            else {
+                _this.sugar++;
+            }
+        }, 30);
     };
     return SubmitPage;
 }());
 SubmitPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-submit',template:/*ion-inline-start:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/submit/submit.html"*/'<ion-header>\n    <ion-title>\n      Submit\n    </ion-title>\n</ion-header>\n\n<ion-content padding>\n  <h1>{{coffee}}</h1>\n  <h1>{{milk}}</h1>\n</ion-content>'/*ion-inline-end:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/submit/submit.html"*/
+        selector: 'page-submit',template:/*ion-inline-start:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/submit/submit.html"*/'<ion-header>\n    <ion-title>\n      Submit\n    </ion-title>\n</ion-header>\n\n<ion-content padding>\n  <img src="assets/images/sugar_packets/sugar-{{sugar}}.png" />\n  <button ion-button color="cream" (click)="addSugar()">Add Sugar</button>\n  <h1>{{coffee}}</h1>\n  <h1>{{milk}}</h1>\n</ion-content>'/*ion-inline-end:"/Users/jayhongvarivatana/apps/coffee_mockup/src/pages/submit/submit.html"*/
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]) === "function" && _b || Object])
 ], SubmitPage);
